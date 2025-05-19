@@ -8,6 +8,7 @@ def selecttion_sort(arr):
                 min_index = j
             
         arr[i], arr[min_index] = arr[min_index], arr[i]
+    return arr    
     
 
 def buble_sort(arr):
@@ -20,6 +21,7 @@ def buble_sort(arr):
                 swapped = True
         if not swapped:
             break
+    return arr    
 
 def insertion_sort(arr):
     n = len(arr)
@@ -32,4 +34,5 @@ def insertion_sort(arr):
             j -= 1
         
         arr[j + 1] = value    
+    return arr    
         
