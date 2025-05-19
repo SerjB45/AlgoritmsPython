@@ -14,7 +14,7 @@ def quick_sort_2(arr):
         return arr
     else:
         pivot = arr[len(arr) // 2]
-        left = [i for i in arr if i <= pivot]
+        left = [i for i in arr if i < pivot]
         middle = [i for i in arr if i == pivot]
         right = [i for i in arr if i > pivot]
         
