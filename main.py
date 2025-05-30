@@ -2,6 +2,7 @@ from linear_sort import *
 from binary_search import *
 from quick_sort import *
 from merge_sort import *
+from dijkstra import *
 
 print('Run')
 lst1 = [9, 65, 4, 4, 6, 0, 5, 2, 1]
@@ -22,3 +23,4 @@ print(merge_sort(lst7))
 
 print(binary_search(lst2, 2))
 
+test_dijkstra()
