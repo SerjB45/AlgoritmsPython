@@ -1,3 +1,5 @@
+import numpy as np
+
 # Пример с рюкзаком
 # задача о рюкзаке с дробимыми предметами (Knapsack Problem)
 
@@ -70,3 +72,49 @@ def test_interval_scheduling():
     print("Максимальное количество неперекрывающихся интервалов:")
     for interval in result:
         print(interval)
+
+# Nearest Neighbor Algorithm). Его суть проста: начинаем движение с произвольной 
+# точки и на каждом шаге идём в ближайшую неизученную точку 
+def nearest_neighbor_tsp(dist_matrix):
+    num_cities = len(dist_matrix)
+    visited = [False] * num_cities
+    path = []
+    current_city = 0  # Стартуем с первой вершины
+    total_cost = 0
+
+    # Посещаем первую вершину
+    path.append(current_city)
+    visited[current_city] = True
+
+    # Выбираем ближайших соседей, пока не объединим все города
+    for _ in range(num_cities - 1):
+        next_city = None
+        min_distance = float('inf')
+        for city in range(num_cities):
+            if not visited[city] and dist_matrix[current_city][city] < min_distance:
+                next_city = city
+                min_distance = dist_matrix[current_city][city]
+        visited[next_city] = True
+        path.append(next_city)
+        total_cost += min_distance
+        current_city = next_city
+
+    # Замыкаем маршрут, возвращаясь в начальный город
+    total_cost += dist_matrix[path[-1]][path[0]]
+    path.append(path[0])  # Последний переход назад в начальный город
+
+    return path, total_cost
+
+def test_nearest_neighbor_tsp():
+    # Матрица расстояний между городами (симметричная матрица)
+    dist_matrix = np.array([
+        [0, 10, 15, 20],
+        [10, 0, 35, 25],
+        [15, 35, 0, 30],
+        [20, 25, 30, 0]
+    ])
+
+    path, cost = nearest_neighbor_tsp(dist_matrix)
+
+    print("Маршрут:", path)
+    print("Суммарная длина маршрута:", cost)           
