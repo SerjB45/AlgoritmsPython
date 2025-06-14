@@ -18,3 +18,15 @@ def quick_merge(list1, list2):
         result += list2[p2:]
     
     return result
+
+
+def merge_all_lists(lists):
+    """Рекурсивная функция, которая объединяет несколько отсортированных списков."""
+    if len(lists) == 1:
+        return lists[0]  # Базовый случай: возвращаем единственный список
+    elif len(lists) > 1:
+        mid = len(lists) // 2
+        left_half = merge_all_lists(lists[:mid])  # Рекурсивно объединяем левую половину
+        right_half = merge_all_lists(lists[mid:])  # Правую половину тоже объединяем
+        return quick_merge(left_half, right_half)  # Объединяем левое и правое половинки
+

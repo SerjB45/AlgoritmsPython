@@ -37,3 +37,6 @@ test_knn_classify()
 list1 = [3, 10, 11, 12, 47, 57, 58, 63, 77, 79, 80, 95]
 list2 = [0, 11, 12, 20, 24, 26, 47, 48, 53, 65, 70, 81, 84, 84, 90]
 print( quick_merge(list1, list2))
+
+list3 = [list1.copy(), list2.copy(), [3, 15, 20, 21, 30]]
+print(merge_all_lists(list3))
